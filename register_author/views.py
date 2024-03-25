@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from allauth.account.views import SignupView
 from django.shortcuts import render
+from register_author.forms import CustomSignupForm
 
 class CustomSignupView(SignupView):
     template_name = 'account/signup.html'
@@ -15,3 +16,4 @@ class CustomSignupView(SignupView):
 
 def account_confirm(request):
     return render(request, 'account/confirm.html')
+
