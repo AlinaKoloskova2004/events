@@ -47,11 +47,11 @@
                         <li><a href="#">О нас</a></li>
 
                         <li><a href="#">Мероприятия</a></li>
-                        <div class="auth">
+                        <div class="auth" style="margin-top:10px;">
                             {% if user.is_authenticated %}
                             <span>{{ user.username }}</span>
                             <a href="{% url 'account_logout' %}"
-                               style="color: black; font-weight: 700; text-transform: uppercase;">
+                               style="color: black; font-weight: 700; text-transform: uppercase; ">
                                 Выход
                             </a>
                             {% else %}
