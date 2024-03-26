@@ -47,7 +47,25 @@
                         <li><a href="#">О нас</a></li>
 
                         <li><a href="#">Мероприятия</a></li>
-                        <li><a href="#">Вход/Регистрация</a></li>
+                        <div class="auth">
+                            {% if user.is_authenticated %}
+                            <span>{{ user.username }}</span>
+                            <a href="{% url 'account_logout' %}"
+                               style="color: black; font-weight: 700; text-transform: uppercase;">
+                                Выход
+                            </a>
+                            {% else %}
+                            <a href="{% url 'account_login' %}"
+                               style="color: black; font-weight: 700; text-transform: uppercase;">
+                                Вход
+                            </a>
+                            /
+                            <a href="{% url 'account_signup' %}"
+                               style="color: black; font-weight: 700; text-transform: uppercase;">
+                                Регистрация
+                            </a>
+                            {% endif %}
+                        </div>
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>

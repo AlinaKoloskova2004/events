@@ -2,18 +2,24 @@ from django.contrib.auth import get_user_model
 from allauth.account.views import SignupView
 from django.shortcuts import render
 from register_author.forms import CustomSignupForm
+from django.shortcuts import redirec
 
 class CustomSignupView(SignupView):
-    template_name = 'account/signup.html'
-    form_class = CustomSignupForm
+    if request.method == 'POST':
+            form = CustomSignupForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('/accounts/confirm-email/')
+        else:
+            form = CustomSignupForm()
 
-    def form_valid(self, form):
-        response = super(CustomSignupView, self).form_valid(form)
-        user = get_user_model().objects.get(email=form.cleaned_data['email'])
-        user.is_active = False
-        user.save()
-        return response
+        return render(request, 'account/signup.html', {'form': form})
 
 def account_confirm(request):
     return render(request, 'account/confirm.html')
 
+def profile(request):
+    if not request.user.is_authenticated or not request.user.email_confirmed:
+        return redirect('confirm_email')
+    else:
+        return render(request, 'profile.html')
