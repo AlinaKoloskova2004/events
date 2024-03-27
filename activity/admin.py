@@ -5,7 +5,7 @@ from .models import Event, Type
 
 @admin.register(Type)
 class TypeAdmin(admin.ModelAdmin):
-    fields = ['type',]
+    fields = ['type','image']
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):

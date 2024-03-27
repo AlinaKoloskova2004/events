@@ -44,10 +44,10 @@
                     <a href="#" class="logo">All<em>Events</em></a>
 
                     <ul class="nav">
-                        <li><a href="#" class="active">Главная</a></li>
+                        <li><a href="{% url 'main:main' %}" class="active">Главная</a></li>
                         <li><a href="#">О нас</a></li>
 
-                        <li><a href="#">Мероприятия</a></li>
+                        <li><a href="{% url 'main:types' %}">Мероприятия</a></li>
                         <div class="auth" style="margin-top:10px;">
                             {% if user.is_authenticated %}
                             <span>{{ user.username }}</span>

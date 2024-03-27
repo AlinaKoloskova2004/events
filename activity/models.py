@@ -4,6 +4,7 @@ from django.db import models
 # Create your models here.
 class Type(models.Model):
     type = models.CharField(max_length=255, verbose_name='Тип мероприятия')
+    image = models.ImageField(upload_to='event_images/', verbose_name='Изображение')
 
     def __str__(self):
         return self.type
