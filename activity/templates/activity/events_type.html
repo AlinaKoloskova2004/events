@@ -1,0 +1,28 @@
+{% extends "root.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Мероприятия</title>
+
+</head>
+<body>
+{% block content %}
+
+
+{% for event in events %}
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="{{ event.image.url }}" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">{{ event.title }}</h5>
+        <p class="card-text">{{ event.type }}</p>
+        <a href="#" class="btn btn-primary">Подробнее</a>
+    </div>
+</div>
+
+{% endfor %}
+
+{% endblock %}}
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends "root.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Мероприятия</title>
+</head>
+<body>
+{% block content %}
+{% for type in types %}
+<h2>{{ type.type }}</h2>
+<li><a href="{% url 'main:events_in_type'  %}">{{ type.type }}</a></li>
+{% endfor %}
+{% endblock %}}
+</body>
+</html>

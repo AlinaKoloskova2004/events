@@ -23,7 +23,8 @@ from allauth.account.views import login
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("main/", include("activity.urls", namespace="main")),
-   path('accounts/', include('allauth.urls')),
+    path('accounts/', include('allauth.urls')),
+
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
