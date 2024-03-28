@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from allauth.account.views import SignupView
 from django.shortcuts import render
 from register_author.forms import CustomSignupForm
-from django.shortcuts import redirec
+from django.shortcuts import redirect
 
 class CustomSignupView(SignupView):
     if request.method == 'POST':
@@ -22,4 +22,4 @@ def profile(request):
     if not request.user.is_authenticated or not request.user.email_confirmed:
         return redirect('confirm_email')
     else:
-        return render(request, 'profile.html')
+        return render(request, 'profile/profile.html')

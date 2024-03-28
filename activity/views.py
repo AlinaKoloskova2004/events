@@ -12,7 +12,8 @@ class ActivityView (ListView):
 
 
 def events(request):
-   types = Event.objects.values('type').distinct()
+   types = Type.objects.all()
+   #types = Event.objects.values('type__id','type__type','type__image').distinct()
    return render(request, 'activity/events.html', {'types': types})
 
 def events_in_type(request, type):
