@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from activity.models import Event, Type
 
 # Create your views here.
@@ -20,3 +20,7 @@ def events_in_type(request, type):
     return render(request, 'activity/events_type.html', {'events': events, 'type': type})
 
 
+class EventDetailView(DetailView):
+    model = Event
+    template_name = 'activity/events_detail.html'
+    context_object_name = 'event'
