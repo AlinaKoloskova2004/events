@@ -34,9 +34,9 @@ def event_detail(request, event_id):
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
-
-            return render(request, 'activity/confirmation.html', {'event': event})
             form.save()
+            return render(request, 'activity/confirmation.html', {'event': event})
+
     else:
         form = BookingForm(initial={'event_id': event_id})
 
