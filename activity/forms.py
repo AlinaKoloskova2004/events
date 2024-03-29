@@ -1,5 +1,7 @@
 from django import forms
 from allauth.account.forms import SignupForm
+from .models import Event
+from reservation.models import Reservation
 
 class CustomSignupForm(SignupForm):
     name = forms.CharField(max_length=255)
@@ -19,3 +21,9 @@ class CustomSignupForm(SignupForm):
         user.save()
         return user
 
+
+
+class BookingForm(forms.ModelForm):
+    class Meta:
+        model = Reservation
+        fields = ['name', 'email', 'quantity']

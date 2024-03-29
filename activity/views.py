@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from activity.models import Event, Type
 
+from .forms import BookingForm
+
 # Create your views here.
 
 class ActivityView (ListView):
@@ -21,15 +23,21 @@ def events_in_type(request, type):
     return render(request, 'activity/events_type.html', {'events': events, 'type': type})
 
 
-class EventDetailView(DetailView):
-    model = Event
-    template_name = 'activity/events_detail.html'
-    context_object_name = 'event'
-
 
 class AboutView (ListView):
    model = Event
    context_object_name = 'events'
    template_name = 'about/about.html'
 
+def event_detail(request, event_id):
+    event = Event.objects.get(id=event_id)
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        if form.is_valid():
 
+            return render(request, 'activity/confirmation.html', {'event': event})
+            form.save()
+    else:
+        form = BookingForm(initial={'event_id': event_id})
+
+    return render(request, 'activity/events_detail.html', {'event': event, 'form': form})

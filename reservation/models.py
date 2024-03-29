@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 
 class Reservation(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE,verbose_name='Мероприятие')
+    name = models.CharField(max_length=255, verbose_name='ФИО')
+    email = models.CharField(max_length=255, verbose_name='Почта')
     reserved_places = models.IntegerField(default=0, verbose_name='Место бронирования')
     attendees = models.ManyToManyField(User, related_name='events_attending', verbose_name='Участник')
     quantity = models.IntegerField(default=1, verbose_name='Кол-во')
