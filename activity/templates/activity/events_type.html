@@ -9,7 +9,7 @@
         <div class="card-body">
             <h5 class="card-title">{{ event.title }}</h5>
             <p class="card-text">{{ event.type }}</p>
-            <a href="{% url 'main:event_detail' pk=event.pk %}" class="btn btn-primary">Подробнее</a>
+            <a href="{% url 'main:event_detail' event_id=event.id %}" class="btn btn-primary">Подробнее</a>
         </div>
     </div>
     {% endfor %}
