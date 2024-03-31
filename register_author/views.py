@@ -1,10 +1,10 @@
 
 
 from allauth.account.views import SignupView
-from .forms import SignupForm
+from .forms import CustomSignupForm
 
 class CustomSignupView(SignupView):
-    form_class = SignupForm
+    form_class = CustomSignupForm
 
 
 

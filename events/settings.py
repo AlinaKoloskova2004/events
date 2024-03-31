@@ -150,4 +150,4 @@ LOGIN_REDIRECT_URL = "/main"
 LOGOUT_REDIRECT_URL = "/main"
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_FORMS = {'signup': 'register_author.forms.SignupForm'}
+ACCOUNT_FORMS = {'signup': 'register_author.forms.CustomSignupForm'}
