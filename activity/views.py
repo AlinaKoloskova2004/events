@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from activity.models import Event, Type
-
+from profile_user.models import Profile
 from .forms import BookingForm
 
 # Create your views here.
@@ -43,3 +43,8 @@ def event_detail(request, event_id):
         form = BookingForm(initial={'event_id': event_id})
 
     return render(request, 'activity/events_detail.html', {'event': event, 'form': form})
+
+class Profile_userView (ListView):
+   model = Profile
+   context_object_name = 'profiles'
+   template_name = 'profile/profile_user.html'
