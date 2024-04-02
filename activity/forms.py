@@ -10,4 +10,6 @@ from reservation.models import Reservation
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Reservation
-        fields = ['quantity',]
+        fields = ['quantity']
+
+

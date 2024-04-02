@@ -1,15 +1,14 @@
 {% extends "root.html" %}
 
-<body>
 {% block content %}
 <div class="d-flex justify-content-around m-4" style="height: 400px;">
     {% for event in events %}
-    <div class="card" style="width: 18rem; ">
+    <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="{{ event.image.url }}" alt="Card image cap" style="height: 200px;">
         <div class="card-body">
             <h5 class="card-title">{{ event.title }}</h5>
             <p class="card-text">{{ event.type }}</p>
-            <a href="{% url 'main:event_detail' event_id=event.id %}" class="btn btn-primary">Подробнее</a>
+            <a href="{% url 'main:event_detail' event_id=event.id user_id=user.id %}" class="btn btn-primary">Подробнее</a>
         </div>
     </div>
     {% endfor %}

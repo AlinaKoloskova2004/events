@@ -11,7 +11,7 @@ class Reservation(models.Model):
         )
     event = models.ForeignKey(Event, on_delete=models.CASCADE,verbose_name='Мероприятие')
     reserved_places = models.IntegerField(default=0, verbose_name='Место бронирования')
-    attendees = models.ManyToManyField(User, related_name='events_attending', verbose_name='Участник')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
     quantity = models.IntegerField(default=1, verbose_name='Кол-во мест')
     paid = models.BooleanField(default=False, verbose_name='Оплачиваемый')
     status = models.CharField(max_length=255, verbose_name='Статус', choices=status_choices)

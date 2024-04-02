@@ -1,4 +1,7 @@
 {% extends "root.html" %}
 {% block content %}
-<h1>Вы успешно забронировали места на: {{ event.title }}</h1>
+<h3>Вы успешно забронировали места на: <h1>{{ event.title }}</h1></h3>
+<h4>Оплата бронирования</h4>
+<p>Сумма к оплате: {{ reservation.total_price }}</p>
+<img src="/static/images/qr.jpg" style="height: 200px;">
 {% endblock %}
