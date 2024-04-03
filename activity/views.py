@@ -1,9 +1,9 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView
 from activity.models import Event, Type
 from profile_user.models import Profile
-from .forms import BookingForm
+from .forms import BookingForm, ProfileForm
 from django.contrib.auth.models import User
 # Create your views here.
 
@@ -50,7 +50,41 @@ def event_detail(request, event_id, user_id):
     except Event.DoesNotExist:
            return HttpResponse("Event not found")
 
-class Profile_userView (ListView):
-   model = Profile
-   context_object_name = 'profiles'
-   template_name = 'profile/profile_user.html'
+def create_profile(request):
+    try:
+        profile = Profile.objects.get(user=request.user)
+        return render(request, 'profile/success.html',{'profile': profile})
+    except Profile.DoesNotExist:
+        pass
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = request.user
+            profile.save()
+            return render(request, 'profile/success.html', {'profile': profile})
+    else:
+        form = ProfileForm()
+    return render(request, 'profile/create_profile.html', {'form': form})
+
+
+def success(request):
+    profile = Profile.objects.get(user=request.user)
+    return render(request, 'profile/success.html', {'profile': profile})
+
+
+def view_profile(request):
+    profile = Profile.objects.get(user=request.user)
+    return render(request, 'profile/profile_user.html', {'profile': profile})
+
+def edit_profile(request):
+    profile = Profile.objects.get(user=request.user)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return render(request, 'profile/success.html', {'profile': profile})
+    else:
+        form = ProfileForm(instance=profile)
+    return render(request, 'profile/edit_profile.html', {'form': form})

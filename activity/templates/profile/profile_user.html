@@ -1,11 +1,20 @@
 {% extends 'root.html' %}
 {% block content %}
 
-<h2>Профиль пользователя: {{user.username}}</h2>
-<a href="{% url 'account_email'  %}">Добавить почту</a>
-<a href="{% url 'account_change_password'  %}">Изменить пароль</a>
+<h3>Профиль пользователя:<h1> {{user.username}}</h1></h3>
+<h2>Имя пользователя: <h5> {{user.first_name}}</h5></h2>
+<h2>Фамилия пользователя:<h5> {{user.last_name}}</h5></h2>
 
 
-<h2>Забронированные мероприятия: </h2>
-<h4>{{reservation.event}}</h4>
+
+<h2>Описание:</h2><p>{{ profile.bio }}</p>
+<h2>Местоположение:</h2><p> {{ profile.location }}</p>
+<h2>Дата рождения:</h2><p> {{ profile.birth_date }}</p>
+
+<h3>Действия с профилем:
+    <h5><a href="{% url 'account_email'  %}">Добавить почту</a>
+    <a href="{% url 'account_change_password'  %}">Изменить пароль</a>
+    <a href="{% url 'main:edit_profile' %}">Изменить профиль</a>
+    </h5>
+</h3>
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends "root.html" %}
 
 {% block content %}
-<div class="d-flex justify-content-around m-4" style="height: 400px;">
+<div class="d-flex justify-content-around m-4" style="height:350px;">
     {% for event in events %}
     <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="{{ event.image.url }}" alt="Card image cap" style="height: 200px;">
