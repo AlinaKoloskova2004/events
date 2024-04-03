@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView
 from activity.models import Event, Type
 from profile_user.models import Profile
+from reservation.models import Reservation
 from .forms import BookingForm, ProfileForm
 from django.contrib.auth.models import User
 # Create your views here.
@@ -76,7 +77,8 @@ def success(request):
 
 def view_profile(request):
     profile = Profile.objects.get(user=request.user)
-    return render(request, 'profile/profile_user.html', {'profile': profile})
+    reservations = Reservation.objects.filter(user=request.user)
+    return render(request, 'profile/profile_user.html', {'profile': profile, 'reservations': reservations})
 
 def edit_profile(request):
     profile = Profile.objects.get(user=request.user)
