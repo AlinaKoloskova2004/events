@@ -23,6 +23,7 @@ from allauth.account.views import login
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("main/", include("activity.urls", namespace="main")),
+    path("comment/", include("comment.urls", namespace="comment")),
     path('accounts/', include('allauth.urls')),
 
 ]

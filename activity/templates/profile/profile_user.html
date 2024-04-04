@@ -29,6 +29,12 @@
 </div>
 {% endfor %}
 </div>
+<h2>Ваши комментарии:</h2>
+<ul>
+    {% for comment in approved_comments %}
+    <li>{{ comment.text }}</li>
+    {% endfor %}
+</ul>
 
 
 

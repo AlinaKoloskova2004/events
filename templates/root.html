@@ -48,6 +48,10 @@
                         <li><a href="{% url 'main:about' %}">О нас</a></li>
 
                         <li><a href="{% url 'main:types' %}">Мероприятия</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'comment:comment' %}">Комментарии</a></li>
+                        <li><a href="{% url 'main:profile_user' %}">Профиль</a></li>
+                        {% endif %}
                         <div class="auth" style="margin-top:10px;">
                             {% if user.is_authenticated %}
                             <span>{{ user.username }}</span>
