@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'comment',
 
 
+
 ]
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',

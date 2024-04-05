@@ -1,12 +1,15 @@
 {% extends 'root.html' %}
 {% block content %}
+<h4 style=" text-align: center; color: #0f6674;">Уважаемые пользователи сайта, мы реализовали данную страницу для вас, чтобы вы поделились своим мнением о сайте в целом и о прошедших мероприятиях!</h4>
+<div class="d-flex justify-content-center">
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Оставить комментарий</button>
+    <button type="submit" class="btn btn-primary">Оставить комментарий</button>
 </form>
-
-<h1>Комментарии</h1>
+</div>
+<h1 style=" text-align: center; color: #0f6674;">Комментарии</h1>
+<div class="d-flex flex-wrap justify-content-around m-4">
 {% for comment in comments %}
 <div class="card" style="width: 200px;">
     <div class="card-header">
@@ -15,8 +18,10 @@
     <div class="card-body">
         <blockquote class="blockquote mb-0">
             <p>: {{ comment.text }}</p>
+            <p>Дата: {{ comment.created_date }}</p>
         </blockquote>
     </div>
 </div>
 {% endfor %}
+</div>
 {% endblock %}

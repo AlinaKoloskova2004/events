@@ -23,18 +23,13 @@
 <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
     <div class="card-header">Название: {{ reservation.event }}</div>
     <div class="card-body">
-        <h5 class="card-title">Статус: {{ reservation.status }}e</h5>
+        <h5 class="card-title">Статус: {{ reservation.status }}</h5>
         <p class="card-text">Стоимость: {{ reservation.total_price }}</p>
     </div>
 </div>
 {% endfor %}
 </div>
-<h2>Ваши комментарии:</h2>
-<ul>
-    {% for comment in approved_comments %}
-    <li>{{ comment.text }}</li>
-    {% endfor %}
-</ul>
+
 
 
 
