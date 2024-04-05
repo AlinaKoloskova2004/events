@@ -44,12 +44,13 @@ def event_detail(request, event_id, user_id):
                 new_booking.user = user
                 new_booking.save()
                 return render(request, 'activity/confirmation.html',  {'event': event, 'user': user})
-
         else:
             form = BookingForm(initial={'event': event.id, 'user': user.id})
         return render(request, 'activity/events_detail.html', {'event': event, 'form': form, 'user': user})
     except Event.DoesNotExist:
-           return HttpResponse("Event not found")
+        return HttpResponse("Event not found")
+    except ValueError:
+       return render(request, 'activity/main.html', {'event': event})
 
 def create_profile(request):
     try:
