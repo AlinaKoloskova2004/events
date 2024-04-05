@@ -7,6 +7,23 @@
 </head>
 <body>
 {% block content %}
+<h1>Список мероприятий</h1>
+
+<form method="get">
+  <label for="category">Категория:</label>
+  <input type="text" name="category">
+
+  <label for="date">Дата:</label>
+  <input type="date" name="date">
+
+  <button type="submit">Применить фильтр</button>
+</form>
+
+<ul>
+  {% for event in events %}
+  lt;li>{{ event.title }} - {{ event.location }} - - {{ event.type }}</li>
+  {% endfor %}
+</ul>
 <div class="d-flex justify-content-between m-4">
 {% for type in types %}
 <div class="card" style="width: 18rem;">

@@ -90,3 +90,19 @@ def edit_profile(request):
     else:
         form = ProfileForm(instance=profile)
     return render(request, 'profile/edit_profile.html', {'form': form})
+
+
+
+def events_list(request):
+    events = Event.objects.all()
+
+    # Фильтрация по различным критериям
+
+    date = request.GET.get('date')
+    if date:
+        events = events.filter(date=date)
+
+    context = {
+        'events': events
+    }
+    return render(request, 'activity/events_list.html', context)

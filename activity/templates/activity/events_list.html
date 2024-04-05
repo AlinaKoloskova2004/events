@@ -1,0 +1,27 @@
+{% extends 'root.html' %}
+{% block content %}
+<h1>Список мероприятий</h1>
+
+<form method="get">
+
+
+    <label for="date">Дата:</label>
+    <input type="date" name="date">
+
+    <button type="submit" class="btn btn-primary">Применить фильтр</button>
+</form>
+<div class="d-flex flex-wrap justify-content-between m-4">
+    {% for event in events %}
+    <div class="card mb-4" style="width: 18rem;">
+        <img class="card-img-top" src="{{ event.image.url }}" alt="Card image cap" style="height: 200px;">
+        <div class="card-body">
+            <h5 class="card-title">{{ event.title|truncatechars:21 }}</h5>
+            <p class="card-text">{{ event.type }}</p>
+            <p class="card-text">{{ event.date }}</p>
+            <a href="{% url 'main:event_detail' event_id=event.id user_id=user.id %}" class="btn btn-primary">Подробнее</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
